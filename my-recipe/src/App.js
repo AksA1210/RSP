@@ -57,6 +57,7 @@ import Contact from './components/Contact';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import RecipeUploadPage from './components/RecipeUploadPage';
+import RecipeDashboard from './components/RecipeDashboard';
 function App() {
   return (
     <div>
@@ -68,6 +69,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/upload-recipe" component={RecipeUploadPage} />
+        <Route path="/recipe-dashboard" component={RecipeDashboard} />
         
       </Switch>
     </div>
