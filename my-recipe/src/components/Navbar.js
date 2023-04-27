@@ -113,7 +113,11 @@ const Navbar = () => {
                 Recipe Upload
               </NavLink>
             </li>
-            
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/recipe-dashboard">
+                Dashboard
+              </NavLink>
+            </li>            
           </ul>
         </div>
       </nav>
