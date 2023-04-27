@@ -54,10 +54,9 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
-import {Login} from './components/Login';
-import {Register} from './components/Register';
-
-
+import { Login } from './components/Login';
+import { Register } from './components/Register';
+import RecipeUploadPage from './components/RecipeUploadPage';
 function App() {
   return (
     <div>
@@ -68,12 +67,13 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/upload-recipe" component={RecipeUploadPage} />
         
       </Switch>
-      
     </div>
   );
 }
 
 export default App;
+
 
