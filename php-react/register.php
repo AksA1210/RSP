@@ -1,47 +1,39 @@
-<?php
-	header("Access-Control-Allow-Origin: *");
-	header("Access-Control-Allow-Headers: access");
-	header("Access-Control-Allow-Methods: POST");
-	header("Content-Type: application/json;charset=UTF-8");
-	header("Access-Control-Allow-Headers:Content-Type,Access-Control-Allow-Headers,Authorization,X-Requested-With");
+<?php include('server.php') ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration system PHP and MySQL</title>
+  <link rel="stylesheet" type="text/css" href="webstyle.css">
+</head>
+<body>
+  <div class="header">
+  	<h2>Register</h2>
+  </div>
 	
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$email = isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : '';
-		$name = isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : '';
-		$pass = isset($_POST['pass']) && !empty($_POST['pass']) ? $_POST['pass'] : '';
-		
-		if (!empty($email) && !empty($name) && !empty($pass)) {
-			$con = mysqli_connect("localhost:3306","root","hira@1234");
-			mysqli_select_db($con,"recipe-application");
-			echo "1234";
-			$sql = "INSERT INTO register(email,name,pass) VALUES('$email','$name','$pass');";
-			$res = mysqli_query($con, $sql);
-			
-			if($res){
-				$response['data']=array(
-					'status'=>'valid'
-				);
-				echo json_encode($response);
-				
-			}
-			else{
-				$response['data']=array(
-					'status'=>'invalid'
-				);
-				echo json_encode($response);
-	
-			}
-		} else {
-			$response['data']=array(
-				'status'=>'invalid'
-			);
-			echo json_encode($response);
-		}
-	} else {
-		$response['data']=array(
-			'status'=>'invalid'
-		);
-		echo json_encode($response);
-	}
-?>
-
+  <form method="post" action="register.php">
+  	<?php include('errors.php'); ?>
+  	<div class="input-group">
+  	  <label>Username</label>
+  	  <input type="text" name="username" value="<?php echo $username; ?>">
+  	</div>
+  	<div class="input-group">
+  	  <label>Email</label>
+  	  <input type="email" name="email" value="<?php echo $email; ?>">
+  	</div>
+  	<div class="input-group">
+  	  <label>Password</label>
+  	  <input type="password" name="password_1">
+  	</div>
+  	<div class="input-group">
+  	  <label>Confirm password</label>
+  	  <input type="password" name="password_2">
+  	</div>
+  	<div class="input-group">
+  	  <button type="submit" class="btn" name="reg_user">Register</button>
+  	</div>
+  	<p>
+  		Already have an account ?  <a href="login.php">Sign in</a>
+  	</p>
+  </form>
+</body>
+</html>
